@@ -1,5 +1,7 @@
+import 'package:covid_19_es/bloc/data.covid.bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class DropdownMenuItemWidget extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final HomePageBloc bloc = Provider.of<HomePageBloc>(context);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -35,9 +38,9 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
               icon: SvgPicture.asset("assets/icons/dropdown.svg"),
               value: cityChosen,
               items: [
-                'Afonso Claudio',
-                'Agua Doce do Norte',
-                'Aguia Branca',
+                'Afonso Cláudio',
+                'àgua Doce do Norte',
+                'Águia Branca',
                 'Alegre',
                 'Alfredo Chaves',
                 'Alto Rio Novo',
@@ -123,6 +126,7 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
               onChanged: (value) {
                 setState(() {
                   cityChosen = value;
+                  bloc.changeCity(value);
                 });
               },
             ),

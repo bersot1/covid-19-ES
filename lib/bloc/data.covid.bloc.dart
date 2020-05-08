@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class HomePageBloc extends ChangeNotifier {
   final covidDataRepository = new CovidInfectedRepository();
-  ResultApiCovidModel resultAPI;
-  int totalDeath;
-  int totalinfected;
-  int totalRecovered;
+  ResultApiCovidModel dataAPI;
+  List result;
+  int totalDeath = 0;
+  int totalinfected = 0;
+  String dateLastUpdate = "none";
   String citySelected = "Vitória";
 
   HomePageBloc() {
@@ -16,14 +17,17 @@ class HomePageBloc extends ChangeNotifier {
 
   updateDataCovid() {
     covidDataRepository.getDataCovidByCity(citySelected).then((data) {
-      this.resultAPI = data;
-      // continue to do code here -> get only last istrue ...
+      this.totalDeath = data.results[0].deaths;
+      this.totalinfected = data.results[0].confirmed;
+      this.dateLastUpdate = data.results[0].date.toString().substring(0, 10);
+      notifyListeners();
     });
   }
 
   changeCity(String newCity) {
     citySelected = newCity;
-    resultAPI = null;
+    this.totalDeath = 0;
+    this.totalinfected = 0;
     updateDataCovid();
     notifyListeners();
   }

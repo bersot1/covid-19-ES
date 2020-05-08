@@ -79,7 +79,7 @@ class Results {
     data['city_ibge_code'] = this.cityIbgeCode;
     data['confirmed'] = this.confirmed;
     data['confirmed_per_100k_inhabitants'] = this.confirmedPer100kInhabitants;
-    data['date'] = this.date.toString();
+    data['date'] = this.date.toString().substring(0, 10);
     data['death_rate'] = this.deathRate;
     data['deaths'] = this.deaths;
     data['estimated_population_2019'] = this.estimatedPopulation2019;
