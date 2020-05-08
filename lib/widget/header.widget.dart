@@ -13,11 +13,12 @@ class HeaderWidget extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             colors: [
               Color(0xFF3383CD),
-              Color(0xFF11249F),
+              Color(0xFFFFFFFF),
+              Color(0xFFFC7889),
             ],
           ),
           image: DecorationImage(
@@ -40,10 +41,10 @@ class HeaderWidget extends StatelessWidget {
                     alignment: Alignment.topCenter,
                   ),
                   Positioned(
-                    top: 20,
-                    left: 150,
+                    top: 130,
+                    left: 170,
                     child: Text(
-                      "Casos no \nEspirito Santo",
+                      "Casos de Covid-19 no \nEspirito Santo",
                       style: kHeadingTextStyle.copyWith(color: Colors.white),
                     ),
                   ),

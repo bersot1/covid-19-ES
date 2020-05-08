@@ -9,7 +9,8 @@ class HomePageBloc extends ChangeNotifier {
   int totalDeath = 0;
   int totalinfected = 0;
   String dateLastUpdate = "none";
-  String citySelected = "Vitória";
+  String citySelected = "Vargem Alta";
+  bool isLoad = false;
 
   HomePageBloc() {
     updateDataCovid();
@@ -20,12 +21,14 @@ class HomePageBloc extends ChangeNotifier {
       this.totalDeath = data.results[0].deaths;
       this.totalinfected = data.results[0].confirmed;
       this.dateLastUpdate = data.results[0].date.toString().substring(0, 10);
+      this.isLoad = true;
       notifyListeners();
     });
   }
 
   changeCity(String newCity) {
     citySelected = newCity;
+    this.isLoad = false;
     this.totalDeath = 0;
     this.totalinfected = 0;
     updateDataCovid();

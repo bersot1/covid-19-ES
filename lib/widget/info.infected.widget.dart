@@ -19,7 +19,7 @@ class InfoWidget extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          bloc.totalDeath == 0
+          bloc.isLoad == false
               ? Center(
                   child: CircularProgressIndicator(),
                 )
@@ -36,21 +36,25 @@ class InfoWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      CounterWidget(
-                        color: kInfectedColor,
-                        number: bloc.totalinfected,
-                        title: "Infectados",
-                      ),
-                      CounterWidget(
-                        color: kDeathColor,
-                        number: bloc.totalDeath,
-                        title: "Mortos",
-                      )
-                    ],
-                  ),
+                  child: bloc.totalinfected == 0
+                      ? Center(
+                          child: Text("Nenhum infectado registrado!"),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            CounterWidget(
+                              color: kInfectedColor,
+                              number: bloc.totalinfected,
+                              title: "Infectados",
+                            ),
+                            CounterWidget(
+                              color: kDeathColor,
+                              number: bloc.totalDeath,
+                              title: "Mortos",
+                            )
+                          ],
+                        ),
                 ),
         ],
       ),
