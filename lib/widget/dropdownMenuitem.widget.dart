@@ -9,8 +9,6 @@ class DropdownMenuItemWidget extends StatefulWidget {
 }
 
 class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
-  String cityChosen = "Vargem Alta";
-
   @override
   Widget build(BuildContext context) {
     final HomePageBloc bloc = Provider.of<HomePageBloc>(context);
@@ -36,7 +34,7 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
               isExpanded: true,
               underline: SizedBox(),
               icon: SvgPicture.asset("assets/icons/dropdown.svg"),
-              value: cityChosen,
+              value: bloc.citySelected,
               items: [
                 'Afonso Cláudio',
                 'Água Doce do Norte',
@@ -126,7 +124,6 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
               ).toList(),
               onChanged: (value) {
                 setState(() {
-                  cityChosen = value;
                   bloc.changeCity(value);
                 });
               },

@@ -9,7 +9,7 @@ class HomePageBloc extends ChangeNotifier {
   int totalDeath = 0;
   int totalinfected = 0;
   String dateLastUpdate = "none";
-  String citySelected = "Vargem Alta";
+  String citySelected = "Vitória";
   bool isLoad = false;
 
   HomePageBloc() {
